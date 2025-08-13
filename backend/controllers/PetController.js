@@ -43,7 +43,7 @@ module.exports = class PetController{
 
          //get pet owner
          const token = getToken(req)
-         const user =await  getUserByToken(token)
+         const user = await  getUserByToken(token)
 
 
          //create a pet
@@ -207,10 +207,7 @@ module.exports = class PetController{
         }else{
             updatedData.color = color
         }
-        if(images.length === 0){
-            res.status(422).json({message: 'a imagem e obrigatoria'})
-            return 
-        }else{
+        if(images.length > 0){
             updatedData.images = []
             images.map((image)=>{
                 updatedData.images.push(image.filename)
